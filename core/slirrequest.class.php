@@ -529,7 +529,7 @@ Example usage:
    */
   final public function isCropping()
   {
-    if ($this->cropRatio['width'] !== null && $this->cropRatio['height'] !== null) {
+    if ($this->cropRatio && $this->cropRatio['width'] !== NULL && $this->cropRatio['height'] !== NULL) {
       return true;
     } else {
       return false;

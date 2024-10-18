@@ -75,10 +75,10 @@ class SLIRExceptionHandler
    * Logs the error to a file
    *
    * @since 2.0
-   * @param Exception $e
+   * @param Throwable $e
    * @return boolean
    */
-  private static function log(Exception $e)
+  private static function log(Throwable $e)
   {
     $userAgent  = (isset($_SERVER['HTTP_USER_AGENT'])) ? $_SERVER['HTTP_USER_AGENT'] : '';
     $referrer   = (isset($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : '';
@@ -101,9 +101,9 @@ class SLIRExceptionHandler
    * Create and output an image with an error message
    *
    * @since 2.0
-   * @param Exception $e
+   * @param Throwable $e
    */
-  private static function errorImage(Exception $e)
+  private static function errorImage(Throwable $e)
   {
     $text = wordwrap($e->getMessage(), self::WRAP_AT);
     $text = explode("\n", $text);
@@ -153,10 +153,10 @@ class SLIRExceptionHandler
    * Outputs the error as plain text
    *
    * @since 2.0
-   * @param Exception $e
+   * @param Throwable $e
    * @return void
    */
-  private static function errorText(Exception $e)
+  private static function errorText(Throwable $e)
   {
     echo nl2br($e->getMessage() . ' in ' . $e->getFile() . ' on ' . $e->getLine()) . "\n";
   }
@@ -165,10 +165,10 @@ class SLIRExceptionHandler
    * Exception handler
    *
    * @since 2.0
-   * @param Exception $e
+   * @param Throwable $e
    * @return void
    */
-  public static function handleException(Exception $e)
+  public static function handleException(Throwable $e)
   {
     if (SLIRConfig::$enableErrorImages === true) {
       self::errorImage($e);
